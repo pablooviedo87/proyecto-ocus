@@ -322,4 +322,15 @@ nav a:hover::after {
 }
 .signup-form button:hover {
   background-color: #005f90;
+  /* Alineado izquierdo en PC y centrado en celulares */
+.align-left {
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .align-left {
+    text-align: center;
+  }
+}
+
 }
