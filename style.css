@@ -323,3 +323,19 @@ nav a:hover::after {
 .signup-form button:hover {
   background-color: #005f90;
 }
+
+
+@media (max-width: 768px) {
+  .features-grid,
+  .process-grid {
+    grid-template-columns: 1fr;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .feature-box,
+  .step-box {
+    width: 100%;
+    max-width: 100%;
+  }
+}
