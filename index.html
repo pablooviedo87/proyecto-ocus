@@ -109,14 +109,36 @@
 <section id="signup" class="signup-section">
   <h2>¿Querés estar al tanto?</h2>
   <p>Dejanos tu mail y te avisamos cuando haya novedades.</p>
-  <form class="signup-form">
-    <input type="email" placeholder="Tu email" required />
+  <form class="signup-form" id="signup-form">
+    <input type="email" name="email" placeholder="Tu email" required />
     <button type="submit">Quiero recibir novedades</button>
   </form>
+  <p id="success-message" style="display: none; color: green; margin-top: 12px;">¡Gracias por suscribirte!</p>
 </section>
+
+<script>
+  const form = document.getElementById('signup-form');
+  const message = document.getElementById('success-message');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = form.querySelector('input[name="email"]').value;
+
+    fetch("https://sheetdb.io/api/v1/hibbo52wjwj9g", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ data: [{ email: email }] })
+    }).then(response => {
+      if (response.ok) {
+        message.style.display = "block";
+        form.reset();
+      } else {
+        alert("Ocurrió un error. Intentá de nuevo más tarde.");
+      }
+    });
+  });
+</script>
 </body>
 </html>
-
-
-
-
